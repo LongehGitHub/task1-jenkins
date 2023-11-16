@@ -23,9 +23,9 @@ pipeline {
             steps {
                 sh '''
                 ssh jenkins@long-jenkins-deploy <<EOF
-
-                docker network rm task1-net && echo "removed network" || echo "network already removed"
-                docker network create task1-net
+                docker pull longehdocker/task1jenk
+                docker pull longehdocker/task1jenk
+                
                 docker stop nginx && echo "Stopped nginx" || echo "nginx is not running"
                 docker rm nginx && echo "removed nginx" || echo "nginx does not exist"
                 for 1 in {1..3}; do
@@ -34,6 +34,8 @@ pipeline {
                 for 1 in {1..3}; do
                 docker rm flask-app-${i} && echo "removed flask-app" || echo "flask-app does not exist"
                 done
+                docker network rm task1-net && echo "removed network" || echo "network already removed"
+                docker network create task1-net
                 for 1 in {1..3}; do
                 docker run -d --name flask-app-${i} --network task1-net longehdocker/task1jenk
                 done
