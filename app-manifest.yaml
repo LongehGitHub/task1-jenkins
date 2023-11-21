@@ -1,13 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
+  name: task1
   labels:
     app: task1-app
-  name: task1
 spec:
   containers:
-  - image: longehdocker/task1jenk
-    imagePullPolicy: IfNotPresent
+  - image: agray998/task1jenk
     name: task1
     env:
       - name: YOUR_NAME
@@ -16,17 +15,17 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: task1-service
   labels:
     app: task1-app
-    name: task1-service
 spec:
   type: LoadBalancer
   selector:
     app: task1-app
   ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 5500
+    - port: 80
+      targetPort: 5500
+      protocol: TCP
   
     
   
