@@ -34,7 +34,7 @@ pipeline {
                 kubectl apply -f nginx-config.yaml --namespace prod
                 sed -e 's,{{YOUR_NAME}},'${YOUR_NAME}',g;' -e 's,{{version}},'${BUILD_NUMBER}',g;' app-manifest.yaml | kubectl apply -f - --namespace prod
                 kubectl apply -f nginx-pod.yaml --namespace prod
-                sleep 60
+                sleep 40
                 kubectl get services --namespace prod
                 '''
             }
