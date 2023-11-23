@@ -8,19 +8,15 @@ pipeline {
             steps {
                 sh '''
                 docker build -t longehdocker/task1jenk:v${BUILD_NUMBER} .
-                docker build -t longehdocker/task1-nginx nginx
                 '''
             }
-
         }
         stage('Push') {
             steps {
                 sh '''
                 docker push longehdocker/task1jenk:v${BUILD_NUMBER}
-                docker push longehdocker/task1-nginx
                 '''
             }
-
         }
         stage('Staging Deploy') {
             steps {
