@@ -21,6 +21,8 @@ pipeline {
             steps {
                 sh '''
                 kubectl apply -f .
+                sleep 50
+                kubectl get services
                 '''
             }
 
