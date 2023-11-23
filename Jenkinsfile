@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh '''
                 docker push longehdocker/task1jenk:v${BUILD_NUMBER}
-                docker push -t longehdocker/task1-nginx
+                docker push longehdocker/task1-nginx
                 '''
             }
 
