@@ -10,6 +10,6 @@ RUN pip install -r requirements.txt
 
 EXPOSE 5500
 
-ENV YOUR_NAME QA="Long"
+ENV YOUR_NAME="Long"
 
 ENTRYPOINT ["python","app.py"]
